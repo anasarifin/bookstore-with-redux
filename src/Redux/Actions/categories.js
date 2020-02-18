@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL_STRING = "http://ec2-35-174-13-30.compute-1.amazonaws.com:3333";
+// const URL_STRING = "http://ec2-35-174-13-30.compute-1.amazonaws.com:3333";
 
 export const categories = () => {
     return {
