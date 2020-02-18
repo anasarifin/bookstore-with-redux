@@ -1,0 +1,25 @@
+.sideApp {
+    width: auto;
+    height: 638px;
+    top: 55px;
+
+    box-shadow: 1px solid #cecece;
+}
+i{
+    margin: 5px;
+    font-size: 30px;
+}
+i.fa-clipboard{
+    color: black;
+}
+i.fa-plus{
+    color: green;
+}
+i.fa-search{
+}
+#search{
+    width: 130px;
+    align:center;
+    justify-content: center;
+}
+    /* margin-right: 200px; */
