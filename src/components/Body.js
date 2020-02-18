@@ -9,8 +9,8 @@ import Cart from "./Cart";
 // import Pagination from './Pagination';
 import { connect } from "react-redux";
 import { categories } from "../Redux/Actions/categories";
-let URL_STRING = "http://ec2-35-174-13-30.compute-1.amazonaws.com:3333";
-
+// let URL_STRING = "http://ec2-54-90-79-234.compute-1.amazonaws.com:3333";
+let URL_STRING = "https://serene-everglades-64554.herokuapp.com";
 class Body extends Component {
     constructor() {
         super();
@@ -231,9 +231,9 @@ class Body extends Component {
             });
     }
   async getAll(){
-    await axios.get('http://ec2-35-174-13-30.compute-1.amazonaws.com:3333/api/products',{
+    await axios.get(`${URL_STRING}/api/products`,{
       headers: {
-        Authorization: localStorage.getItem('keyToken')
+        Authorization: localStorage.getItem('keyToken'),'Access-Control-Allow-Origin': '*' 
       }
     })
     .then(result => {
@@ -481,7 +481,7 @@ class Body extends Component {
                                             className="form-control"
                                             required
                                         >
-                                            <option hidden disabled selected value> ---SELECT--- </option>
+                                            <option hidden disabled value> ---SELECT--- </option>
                                             {this.state.categories.map(
                                                 (item, index) => {
                                                     return (

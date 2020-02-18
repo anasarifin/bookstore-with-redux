@@ -4,7 +4,8 @@ import '../assets/style/product.css'
 import {Card, CardImg, CardBody, CardTitle, CardText, CardSubtitle, Button} from 'reactstrap';
 import { connect } from "react-redux";
 import { categories } from "../Redux/Actions/categories";
-const URL_STRING = 'http://ec2-35-174-13-30.compute-1.amazonaws.com:3333';
+// const URL_STRING = 'http://ec2-54-90-79-234.compute-1.amazonaws.com:3333';
+const URL_STRING = 'https://serene-everglades-64554.herokuapp.com';
 
 class Product extends Component {
   constructor(props){
@@ -94,7 +95,8 @@ class Product extends Component {
       method: 'put',
       url: url,
       data: data,
-      config: { headers: {'Content-Type': 'multipart/form-data', 'Authorization': localStorage.getItem('keyToken') }}
+      config: { headers: {'Content-Type': 'multipart/form-data', 'Authorization': localStorage.getItem('keyToken'), 
+               'Access-Control-Allow-Origin': '*'  }}
     })
 
     window.location.href = "/";

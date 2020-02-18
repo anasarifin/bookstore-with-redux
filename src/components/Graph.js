@@ -4,7 +4,8 @@ import axios from "axios";
 // import '../assets/css/fontawesome.min.css'
 // import '../App.css'
 import { Link } from "react-router-dom";
-const URL_STRING = "http://ec2-35-174-13-30.compute-1.amazonaws.com:3333"
+// const URL_STRING = "http://ec2-54-90-79-234.compute-1.amazonaws.com:3333"
+const URL_STRING = "https://serene-everglades-64554.herokuapp.com"
 
 class Graph extends Component {
     constructor() {

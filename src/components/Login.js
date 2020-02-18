@@ -3,7 +3,8 @@ import axios from 'axios'
 // import '../assets/css/bootstrap.min.css'
 // import '../assets/css/fontawesome.min.css'
 import '../App.css'
-const URL_STRING = "http://ec2-35-174-13-30.compute-1.amazonaws.com:3333"
+const URL_STRING = "http://ec2-54-90-79-234.compute-1.amazonaws.com:3333"
+const URL_STRING = "https://serene-everglades-64554.herokuapp.com"
 
 class Login extends Component{
   constructor(props){
@@ -120,7 +121,7 @@ class Login extends Component{
         <div
           className="modal fade"
           id="signUpModal"
-          tabindex={-1}
+          tabIndex={-1}
           role="dialog"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true">

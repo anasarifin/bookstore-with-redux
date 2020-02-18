@@ -4,6 +4,9 @@ import axios from "axios";
 import Body from "./Body";
 import Navbars from "./Navbars";
 
+// const URL_STRING = 'http://ec2-54-90-79-234.compute-1.amazonaws.com:3333'
+const URL_STRING = 'https://serene-everglades-64554.herokuapp.com'
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +24,7 @@ class Home extends Component {
     async search(filter) {
          await axios
             .get(
-                `http://localhost:3333/api/products/search?name=${filter}`,
+                `${URL_STRING}/api/products/search?name=${filter}`,
                 {
                     headers: {
                         Authorization: localStorage.getItem("keyToken")
