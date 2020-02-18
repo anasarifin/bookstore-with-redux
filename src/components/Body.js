@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "../assets/css/bootstrap.min.css";
-import "../assets/css/fontawesome.min.css";
+// import "../assets/css/bootstrap.min.css";
+// import "../assets/css/fontawesome.min.css";
 import "../assets/style/body.css";
 import Product from "./Product";
 import Cart from "./Cart";
-import Pagination from './Pagination';
+// import Pagination from './Pagination';
 import { connect } from "react-redux";
 import { categories } from "../Redux/Actions/categories";
 
@@ -81,6 +81,7 @@ class Body extends Component {
         window.location.href = "/home";
     }
     handleAddImg(e) {
+       //eslint-disable-next-line
         let checkImg = /[\/.](gif|jpg|jpeg|tiff|png)$/i;
         let extImg = e.target.files[0].name;
         if (e.target.files[0].size > 1000000) {
@@ -94,12 +95,14 @@ class Body extends Component {
     }
   async previousPage(){
     if (this.state.currentPage > 0) {
+       //eslint-disable-next-line
       this.state.currentPage -= 6
     }
     await this.getAll()
   }
 
   nextPage(){
+       //eslint-disable-next-line
     this.state.currentPage += 6
     this.getAll()
   }
@@ -130,6 +133,7 @@ class Body extends Component {
     }
 
     handleCart(result) {
+       //eslint-disable-next-line
         this.state.amount += 1;
         this.setState(state => {
             const cart = state.cart;
@@ -151,6 +155,7 @@ class Body extends Component {
     }
 
     reduceCart(result) {
+       //eslint-disable-next-line
         this.state.amount -= 1;
         this.setState(state => {
             const cart = state.cart;
@@ -164,6 +169,7 @@ class Body extends Component {
     }
 
     handleCheckout() {
+       //eslint-disable-next-line
         this.state.cart.map(item => {
             axios
                 .post(
@@ -188,7 +194,9 @@ class Body extends Component {
     async removeCart(id) {
         let state = [...this.state.cart];
         let index = state.map(el => el.id).indexOf(id);
+       //eslint-disable-next-line
         this.state.amount -= this.state.cart[index].qty;
+       //eslint-disable-next-line
         this.state.total -=
             this.state.cart[index].qty * this.state.cart[index].price;
         if (index !== -1) state.splice(index, 1);
@@ -313,11 +321,11 @@ class Body extends Component {
                 </span>
               </div>
               <div className="col-md-8">
-                <input type="text" name="quant[1]" value={Math.ceil((this.state.currentPage / 6)+1)} className="form-control input-number" defaultValue={1} min={1} />
+                <input type="text" name="quant[1]" value={Math.ceil((this.state.currentPage / 6)+1)} className="form-control input-number" min={1} disabled/>
               </div>
               <div className="col-md-2">
                 <span className="input-group-btn">
-                  <button type="button" className="btn btn-default btn-number" disabled={Math.ceil((this.state.currentPage / 6)+1) == max} data-type="plus" data-field="quant[1]" onClick={this.nextPage}>
+                  <button type="button" className="btn btn-default btn-number" disabled={Math.ceil((this.state.currentPage / 6)+1) === max} data-type="plus" data-field="quant[1]" onClick={this.nextPage}>
                     <span className="fas fa-plus" />
                   </button>
                 </span>
@@ -360,8 +368,10 @@ class Body extends Component {
                     )}
                     <div>
                         {this.state.total > 0 ? (
+       //eslint-disable-next-line
                             <strong>Total Price: Rp. {this.state.total}</strong>
                         ) : (
+       //eslint-disable-next-line
                             <h1></h1>
                         )}
                         {this.state.cart.length > 0 ? (
@@ -381,10 +391,54 @@ class Body extends Component {
                 </div>
 
                 {/* modal */}
+
+
+        <div
+          className="modal fade"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          show={true}
+          >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5
+                  className="modal-title"
+                  id="exampleModalLabel">
+                  Remove Product
+                </h5>
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <form onSubmit={this.handleDelete}>
+              <div className="modal-body">
+                <p>
+                  Are You Sure you want to delete this product?
+                </p>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-warning"
+                  data-dismiss="modal">Close</button>
+                <button type="submit" className="btn btn-danger">
+                  Delete
+                </button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+
                 <div
                     className="modal fade"
                     id="addModal"
-                    tabindex={-1}
+                    tabIndex={-1}
                     role="dialog"
                     aria-labelledby="exampleModalLabel"
                     aria-hidden="true"
@@ -467,7 +521,7 @@ class Body extends Component {
                                             {this.state.categories.map(
                                                 (item, index) => {
                                                     return (
-                                                        <option value={item.id}>
+                                                        <option key={index} value={item.id}>
                                                             {item.name_category}
                                                         </option>
                                                     );
@@ -527,7 +581,7 @@ class Body extends Component {
                 <div
                     className="modal fade"
                     id="detailProduct"
-                    tabindex={-1}
+                    tabIndex={-1}
                     role="dialog"
                     aria-labelledby="exampleModalLabel"
                     aria-hidden="true"
@@ -610,7 +664,7 @@ class Body extends Component {
                                             {this.state.categories.map(
                                                 (item, index) => {
                                                     return (
-                                                        <option value={item.id}>
+                                                        <option key={index} value={item.id}>
                                                             {item.name_category}
                                                         </option>
                                                     );
@@ -669,7 +723,7 @@ class Body extends Component {
                 <div
                     className="modal fade"
                     id="checkout"
-                    tabindex={-1}
+                    tabIndex={-1}
                     role="dialog"
                     aria-labelledby="exampleModalLabel"
                     aria-hidden="true"

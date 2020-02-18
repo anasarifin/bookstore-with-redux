@@ -37,19 +37,6 @@ class Product extends Component {
   }
 
   async getCategories(){
-    // axios.get('http://localhost:3333/api/categories',{
-    //   headers: {
-    //     Authorization: localStorage.getItem('keyToken')
-    //   }
-    // })
-    // .then(result => {
-    //   this.setState({categories: result.data.data})
-    //   // console.log(result.data.data)
-    // })
-    // .catch(err => {
-    //   console.log(err)
-    // })
-
         await this.props.dispatch(categories());
         this.setState({ categories: this.props.data.categories });
   }
@@ -68,6 +55,7 @@ class Product extends Component {
     })
   }
   handleEditImg(e){
+       //eslint-disable-next-line
         let checkImg = `/[\/.](gif|jpg|jpeg|tiff|png)$/i`;
         let extImg = e.target.files[0].name
         if(e.target.files[0].size > 1000000){
@@ -139,8 +127,6 @@ class Product extends Component {
     e.preventDefault()
 
     axios.delete(`http://localhost:3333/api/products/${this.props.id}`, {crossdomain: true})
-      .then(res => {
-      })
 
     window.location.href = "http://localhost:3000/home";
   }
@@ -171,7 +157,7 @@ class Product extends Component {
         <div
           className="modal fade"
           id={"deleteModal-"+this.props.id}
-          tabindex={-1}
+          tabIndex={-1}
           role="dialog"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true">
@@ -214,7 +200,7 @@ class Product extends Component {
         <div
           className="modal fade"
           id={"editModal-"+this.props.id}
-          tabindex={-1}
+          tabIndex={-1}
           role="dialog"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true">
@@ -281,7 +267,7 @@ class Product extends Component {
                       {
                         this.state.categories.map((item, index) => {
                           return (
-                            <option value={item.id}>{item.name_category}</option>
+                            <option key={index} value={item.id}>{item.name_category}</option>
                           )
                         })
                       }

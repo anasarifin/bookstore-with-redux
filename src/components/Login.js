@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import '../assets/css/bootstrap.min.css'
-import '../assets/css/fontawesome.min.css'
+// import '../assets/css/bootstrap.min.css'
+// import '../assets/css/fontawesome.min.css'
 import '../App.css'
 
 class Login extends Component{

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import './assets/css/bootstrap.min.css'
+// import './assets/css/bootstrap.min.css'
  import { Provider } from 'react-redux'
 import Login from './components/Login'
 import Home from './components/Home'

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "../assets/style/navbar.css";
 
 class Navbars extends Component {
@@ -48,7 +47,7 @@ class Navbars extends Component {
                 <nav className="navbar bg-custom navbar-light shadow">
                     <i className="fa fa-bars" onClick={this.sideBarToggle}></i>
                     <input type="text"  id="search" onChange={this.searchChange}/>
-                <i class="fa fa-search" onClick={this.search}></i>
+                <i className="fa fa-search" onClick={this.search}></i>
                     <i
                         className="fas fa-shopping-cart"
                         onClick={this.cartToggle}
@@ -58,15 +57,15 @@ class Navbars extends Component {
                     className="sideApp shadow"
                     style={{ display: this.state.showSideBar }}
                 >
-                    <i Link to='/' className="fas fa-book"></i>
+                    <a href="/home"><i className="fas fa-book"></i></a>
                     <i
                         data-toggle="modal"
                         data-target="#addModal"
                         className="fas fa-plus"
                     ></i>
-                    <Link to="/history">
-                        <i class="fas fa-clipboard"></i>
-                    </Link>
+                    <a href="/history">
+                        <i className="fas fa-clipboard"></i>
+                    </a>
                     <i
                         onClick={this.handleLogOut}
                         className="fas fa-arrow-alt-circle-left"

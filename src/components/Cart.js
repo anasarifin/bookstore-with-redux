@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import '../assets/css/bootstrap.min.css'
-import '../assets/css/fontawesome.min.css'
-// import '../App.css'
 
 class Cart extends Component{
   constructor(props){
