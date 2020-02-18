@@ -17,7 +17,8 @@ class Product extends Component {
       id_category: this.props.category,
       image: "",
       qty: this.props.quantity,
-      qtyInCart: 0
+      qtyInCart: 0,
+      warningFile: false
     }
     this.handleChangeQuantity = this.handleChangeQuantity.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
@@ -59,11 +60,11 @@ class Product extends Component {
         let checkImg = `/[\/.](gif|jpg|jpeg|tiff|png)$/i`;
         let extImg = e.target.files[0].name
         if(e.target.files[0].size > 1000000){
-            alert('files is too big')
+            this.setState({ warningFile: true })
             e.target.value = null
         }
         if(!extImg.match(checkImg)){
-            alert('files is not image')
+            this.setState({ warningFile: true })
             e.target.value = null
         }
     }
@@ -232,7 +233,8 @@ class Product extends Component {
                       id="name"
                       name="name"
                       onChange = {this.handleChangeName}
-                      value={this.state.name} />
+                      value={this.state.name} 
+                      required/>
                   </div>
                   <div className="form-group">
                     <label
@@ -244,7 +246,8 @@ class Product extends Component {
                       id="price"
                       name="price"
                       onChange = {this.handleChangePrice}
-                      value={this.state.price} />
+                      value={this.state.price} 
+                      required/>
                   </div>
                   <div className="form-group">
                     <label
@@ -256,14 +259,15 @@ class Product extends Component {
                       id="quantity"
                       name="count"
                       onChange = {this.handleChangeQuantity}
-                      value={this.state.qty} />
+                      value={this.state.qty} 
+                      required/>
                   </div>
                   <div>
                     <label
                       htmlFor="id_category"
                       className="col-form-label">category:</label>
-                    <select id="category" name="id_category" className="form-control">
-                      <option value="">--SELECT--</option>
+                    <select id="category" name="id_category" className="form-control" required>
+                     <option hidden disabled selected value> ---SELECT--- </option>
                       {
                         this.state.categories.map((item, index) => {
                           return (
@@ -277,12 +281,14 @@ class Product extends Component {
                     <label
                       htmlFor="image"
                       className="col-form-label">Image:</label>
+                      { this.state.warningFile === true ? <p style={{color: 'red'}}>File must image and image must lower than 1MB !!</p> : '' }
                     <input
                       type="file"
                       className="form-control"
                       id="image"
                       name="image" 
                       onChange={this.handleEditImg}
+                      required
                       />
                   </div>
                   <div className="form-group">

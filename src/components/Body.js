@@ -5,6 +5,7 @@ import axios from "axios";
 import "../assets/style/body.css";
 import Product from "./Product";
 import Cart from "./Cart";
+// import Modal from './Modal'
 // import Pagination from './Pagination';
 import { connect } from "react-redux";
 import { categories } from "../Redux/Actions/categories";
@@ -24,7 +25,8 @@ class Body extends Component {
             amount: 0,
             filter: "",
             search: [],
-            showCart: "none"
+            showCart: "none",
+            warningFile: false
         };
         this.handleAddImg = this.handleAddImg.bind(this);
         this.handleCheckout = this.handleCheckout.bind(this);
@@ -85,11 +87,11 @@ class Body extends Component {
         let checkImg = /[\/.](gif|jpg|jpeg|tiff|png)$/i;
         let extImg = e.target.files[0].name;
         if (e.target.files[0].size > 1000000) {
-            alert("files is too big");
+            this.setState({ warningFile: true })
             e.target.value = null;
         }
         if (!extImg.match(checkImg)) {
-            alert("files is not image");
+            this.setState({ warningFile: true })
             e.target.value = null;
         }
     }
@@ -393,47 +395,6 @@ class Body extends Component {
                 {/* modal */}
 
 
-        <div
-          className="modal fade"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          show={true}
-          >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5
-                  className="modal-title"
-                  id="exampleModalLabel">
-                  Remove Product
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <form onSubmit={this.handleDelete}>
-              <div className="modal-body">
-                <p>
-                  Are You Sure you want to delete this product?
-                </p>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-warning"
-                  data-dismiss="modal">Close</button>
-                <button type="submit" className="btn btn-danger">
-                  Delete
-                </button>
-              </div>
-            </form>
-            </div>
-          </div>
-        </div>
 
                 <div
                     className="modal fade"
@@ -475,6 +436,7 @@ class Body extends Component {
                                             className="form-control"
                                             id="name"
                                             name="name"
+                                            required
                                         />
                                     </div>
                                     <div className="form-group">
@@ -489,6 +451,7 @@ class Body extends Component {
                                             className="form-control"
                                             id="price"
                                             name="price"
+                                            required
                                         />
                                     </div>
                                     <div className="form-group">
@@ -503,6 +466,7 @@ class Body extends Component {
                                             className="form-control"
                                             id="quantity"
                                             name="count"
+                                            required
                                         />
                                     </div>
                                     <div>
@@ -516,8 +480,9 @@ class Body extends Component {
                                             id="category"
                                             name="id_category"
                                             className="form-control"
+                                            required
                                         >
-                                            <option value="">--SELECT--</option>
+                                            <option hidden disabled selected value> ---SELECT--- </option>
                                             {this.state.categories.map(
                                                 (item, index) => {
                                                     return (
@@ -534,14 +499,16 @@ class Body extends Component {
                                             htmlFor="image"
                                             className="col-form-label"
                                         >
-                                            Image:
+                                            Image: <br />
                                         </label>
+                                        { this.state.warningFile === true ? <p style={{color: 'red'}}>File must image and image must lower than 1MB !!</p> : '' }
                                         <input
                                             type="file"
                                             className="form-control"
                                             id="image"
                                             name="image"
                                             onChange={this.handleAddImg}
+                                            required
                                         />
                                     </div>
                                     <div className="form-group">
@@ -555,7 +522,7 @@ class Body extends Component {
                                             className="form-control"
                                             id="description"
                                             name="description"
-                                        />
+                                            required/>
                                     </div>
                                 </div>
                                 <div className="modal-footer">
