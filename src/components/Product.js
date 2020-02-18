@@ -4,6 +4,7 @@ import '../assets/style/product.css'
 import {Card, CardImg, CardBody, CardTitle, CardText, CardSubtitle, Button} from 'reactstrap';
 import { connect } from "react-redux";
 import { categories } from "../Redux/Actions/categories";
+const URL_STRING = 'http://ec2-35-174-13-30.compute-1.amazonaws.com:3333';
 
 class Product extends Component {
   constructor(props){
@@ -57,7 +58,7 @@ class Product extends Component {
   }
   handleEditImg(e){
        //eslint-disable-next-line
-        let checkImg = `/[\/.](gif|jpg|jpeg|tiff|png)$/i`;
+        let checkImg = /[\/.](gif|jpg|jpeg|tiff|png)$/i;
         let extImg = e.target.files[0].name
         if(e.target.files[0].size > 1000000){
             this.setState({ warningFile: true })
@@ -87,7 +88,7 @@ class Product extends Component {
     e.preventDefault()
     const data = new FormData(e.target)
 
-    let url = `http://localhost:3333/api/products/${this.props.id}`
+    let url = `${URL_STRING}/api/products/${this.props.id}`
 
     axios({
       method: 'put',
@@ -96,7 +97,7 @@ class Product extends Component {
       config: { headers: {'Content-Type': 'multipart/form-data', 'Authorization': localStorage.getItem('keyToken') }}
     })
 
-    window.location.href = "http://localhost:3000/home";
+    window.location.href = "/";
   }
 
   async addToCart(){
@@ -127,9 +128,9 @@ class Product extends Component {
   handleDelete(e){
     e.preventDefault()
 
-    axios.delete(`http://localhost:3333/api/products/${this.props.id}`, {crossdomain: true})
+    axios.delete(`${URL_STRING}/api/products/${this.props.id}`, {crossdomain: true})
 
-    window.location.href = "http://localhost:3000/home";
+    window.location.href = "/home";
   }
 
   render(){
@@ -137,7 +138,7 @@ class Product extends Component {
         <>
         <div className="card">
         <Card>
-            <CardImg className="cardImg"  src={"http://localhost:3333/" + this.props.image}/>
+            <CardImg className="cardImg"  src={`${URL_STRING}` + this.props.image}/>
             <CardBody>
                 <CardTitle>{this.props.name}</CardTitle>
                 <CardSubtitle></CardSubtitle>

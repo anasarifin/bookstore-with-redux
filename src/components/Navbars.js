@@ -18,7 +18,7 @@ class Navbars extends Component {
 
     handleLogOut() {
         localStorage.removeItem("keyToken");
-        window.location.href = "http://localhost:3000/";
+        window.location.href = "/";
     }
     sideBarToggle() {
         if (this.state.showSideBar === "none") {
@@ -66,10 +66,7 @@ class Navbars extends Component {
                     <a href="/history">
                         <i className="fas fa-clipboard"></i>
                     </a>
-                    <i
-                        onClick={this.handleLogOut}
-                        className="fas fa-arrow-alt-circle-left"
-                    ></i>
+                    <i className="fa fa-arrow-left" onClick={this.handleLogOut}></i>
                 </div>
             </div>
         );

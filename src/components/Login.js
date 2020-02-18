@@ -3,6 +3,7 @@ import axios from 'axios'
 // import '../assets/css/bootstrap.min.css'
 // import '../assets/css/fontawesome.min.css'
 import '../App.css'
+const URL_STRING = "http://ec2-35-174-13-30.compute-1.amazonaws.com:3333"
 
 class Login extends Component{
   constructor(props){
@@ -22,13 +23,13 @@ class Login extends Component{
 
     axios({
       method: 'post',
-      url: 'http://localhost:3333/api/users/login',
+      url: `${URL_STRING}/api/users/login`,
       data: data,
       config: { headers: {'Content-Type': 'multipart/form-data' }}
     })
     .then(res => {
       localStorage.setItem('keyToken', `Bearer ${res.data.token}`)
-      window.location.href = "http://localhost:3000/home"
+      window.location.href = "/home"
     })
     .catch(err => {
       alert('username or password incorrect')
@@ -40,13 +41,13 @@ class Login extends Component{
     const data = new FormData(e.target)
     console.log(e)
 
-    fetch('http://localhost:3333/api/users/register', {
+    fetch(`${URL_STRING}/api/users/register`, {
       method: 'POST',
       body: data,
     })
     .then(res => {
       if (res.status === 200) {
-        window.location.href = "http://localhost:3000/"
+        window.location.href = "/"
       } else if (res.status === 500) {
         alert("username is already exist")
       }

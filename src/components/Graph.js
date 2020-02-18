@@ -4,6 +4,7 @@ import axios from "axios";
 // import '../assets/css/fontawesome.min.css'
 // import '../App.css'
 import { Link } from "react-router-dom";
+const URL_STRING = "http://ec2-35-174-13-30.compute-1.amazonaws.com:3333"
 
 class Graph extends Component {
     constructor() {
@@ -31,7 +32,7 @@ class Graph extends Component {
 
     getHistory() {
         axios
-            .get("http://localhost:3333/api/products/history", {
+            .get(`${URL_STRING}/api/products/history`, {
                 headers: {
                     Authorization: localStorage.getItem("keyToken")
                 }
@@ -46,7 +47,7 @@ class Graph extends Component {
 
     getDailyIncome() {
         axios
-            .get("http://localhost:3333/api/products/dailyIncome")
+            .get(`${URL_STRING}/api/products/dailyIncome`)
             .then(result => {
                 this.setState({ dailyIncome: result.data.data });
             })
@@ -57,7 +58,7 @@ class Graph extends Component {
 
     getAnnualIncome() {
         axios
-            .get("http://localhost:3333/api/products/annualIncome")
+            .get(`${URL_STRING}/api/products/annualIncome`)
             .then(result => {
                 this.setState({ annualIncome: result.data.data });
             })
