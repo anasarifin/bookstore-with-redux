@@ -4,7 +4,7 @@ import axios from "axios";
 // import '../assets/css/fontawesome.min.css'
 // import '../App.css'
 import { Link } from "react-router-dom";
-const URL_STRING = process.env.REACT_APP_CLOUD;
+const URL_STRING = '3.85.4.188:3333';
 
 class Graph extends Component {
     constructor() {

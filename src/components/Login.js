@@ -3,7 +3,7 @@ import axios from 'axios'
 // import '../assets/css/bootstrap.min.css'
 // import '../assets/css/fontawesome.min.css'
 import '../App.css'
-const URL_STRING = process.env.REACT_APP_CLOUD;
+const URL_STRING = '3.85.4.188:3333';
 
 class Login extends Component{
   constructor(props){

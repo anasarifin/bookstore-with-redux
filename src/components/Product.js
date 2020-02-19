@@ -4,7 +4,7 @@ import '../assets/style/product.css'
 import {Card, CardImg, CardBody, CardTitle, CardText, CardSubtitle, Button} from 'reactstrap';
 import { connect } from "react-redux";
 import { categories } from "../Redux/Actions/categories";
-const URL_STRING = process.env.REACT_APP_CLOUD;
+const URL_STRING = '3.85.4.188:3333';
 
 class Product extends Component {
   constructor(props){

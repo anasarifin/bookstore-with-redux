@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL_STRING = process.env.REACT_APP_CLOUD;
+const URL_STRING = '3.85.4.188:3333';
 
 export const categories = () => {
     return {
