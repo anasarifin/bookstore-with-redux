@@ -29,7 +29,7 @@ class Login extends Component{
     })
     .then(res => {
       localStorage.setItem('keyToken', `Bearer ${res.data.token}`)
-      window.location.href = "http://localhost:3000/home"
+      window.location.href = `http://${URL_STRING}/home`
     })
     .catch(err => {
       alert('username or password incorrect')
@@ -47,7 +47,7 @@ class Login extends Component{
     })
     .then(res => {
       if (res.status === 200) {
-        window.location.href = "http://localhost:3000/"
+        window.location.href = `http://${URL_STRING}:3000/`
       } else if (res.status === 500) {
         alert("username is already exist")
       }

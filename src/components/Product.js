@@ -97,7 +97,7 @@ class Product extends Component {
       config: { headers: {'Content-Type': 'multipart/form-data', 'Authorization': localStorage.getItem('keyToken') }}
     })
 
-    window.location.href = "http://localhost:3000/home";
+    window.location.href = `http://${URL_STRING}/home`;
   }
 
   async addToCart(){
@@ -130,7 +130,7 @@ class Product extends Component {
 
     axios.delete(`http://${URL_STRING}/api/products/${this.props.id}`, {crossdomain: true})
 
-    window.location.href = "http://localhost:3000/home";
+    window.location.href = `http://${URL_STRING}/home`;
   }
 
   render(){
