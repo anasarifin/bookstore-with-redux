@@ -47,7 +47,7 @@ class Graph extends Component {
 
     getDailyIncome() {
         axios
-            .get(`${URL_STRING}/api/products/dailyIncome`)
+            .get(`${URL_STRING}/api/products/dailyincome`)
             .then(result => {
                 this.setState({ dailyIncome: result.data.data });
             })
@@ -58,7 +58,7 @@ class Graph extends Component {
 
     getAnnualIncome() {
         axios
-            .get(`${URL_STRING}/api/products/annualIncome`)
+            .get(`${URL_STRING}/api/products/annualincome`)
             .then(result => {
                 this.setState({ annualIncome: result.data.data });
             })

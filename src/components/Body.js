@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 // import "../assets/css/bootstrap.min.css";
 // import "../assets/css/fontawesome.min.css";
 import "../assets/style/body.css";
@@ -189,7 +190,7 @@ class Body extends Component {
                     }
                 )
                 .then(() => {
-                    window.location.href = "/history";
+                  return <Link to='/'></Link>
                 });
         });
     }

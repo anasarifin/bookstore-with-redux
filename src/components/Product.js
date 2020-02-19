@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import axios from 'axios'
 import '../assets/style/product.css'
 import {Card, CardImg, CardBody, CardTitle, CardText, CardSubtitle, Button} from 'reactstrap';
 import { connect } from "react-redux";
 import { categories } from "../Redux/Actions/categories";
+const URL_STRING = "http://3.85.4.188:3333"
 
 class Product extends Component {
   constructor(props){
@@ -87,7 +89,7 @@ class Product extends Component {
     e.preventDefault()
     const data = new FormData(e.target)
 
-    let url = `http://localhost:3333/api/products/${this.props.id}`
+    let url = `${URL_STRING}/api/products/${this.props.id}`
 
     axios({
       method: 'put',
@@ -96,7 +98,7 @@ class Product extends Component {
       config: { headers: {'Content-Type': 'multipart/form-data', 'Authorization': localStorage.getItem('keyToken') }}
     })
 
-    window.location.href = "http://localhost:3000/home";
+      return <Link to='/'></Link>
   }
 
   async addToCart(){
@@ -127,9 +129,9 @@ class Product extends Component {
   handleDelete(e){
     e.preventDefault()
 
-    axios.delete(`http://localhost:3333/api/products/${this.props.id}`, {crossdomain: true})
+    axios.delete(`${URL_STRING}/api/products/${this.props.id}`, {crossdomain: true})
 
-    window.location.href = "http://localhost:3000/home";
+      return <Link to='/'></Link>
   }
 
   render(){
@@ -137,7 +139,7 @@ class Product extends Component {
         <>
         <div className="card">
         <Card>
-            <CardImg className="cardImg"  src={"http://localhost:3333/" + this.props.image}/>
+            <CardImg className="cardImg"  src={`${URL_STRING}/` + this.props.image}/>
             <CardBody>
                 <CardTitle>{this.props.name}</CardTitle>
                 <CardSubtitle></CardSubtitle>

@@ -69,7 +69,7 @@ class Navbars extends Component {
                     </Link>
                     <i
                         onClick={this.handleLogOut}
-                        className="fas fa-arrow-alt-circle-left"
+                        className="fa fa-door-open"
                     ></i>
                 </div>
             </div>
