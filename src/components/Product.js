@@ -138,7 +138,7 @@ class Product extends Component {
         <>
         <div className="card">
         <Card>
-            <CardImg className="cardImg"  src={`http://${URL_STRING}/uploads/` + this.props.image}/>
+            <CardImg className="cardImg"  src={`http://${URL_STRING}` + this.props.image}/>
             <CardBody>
                 <CardTitle>{this.props.name}</CardTitle>
                 <CardSubtitle></CardSubtitle>

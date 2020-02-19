@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../assets/style/navbar.css";
+import { Link } from 'react-router-dom';
 
 class Navbars extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class Navbars extends Component {
 
     handleLogOut() {
         localStorage.removeItem("keyToken");
-        this.props.history.push('/');
+        window.location.href('/')
     }
     sideBarToggle() {
         if (this.state.showSideBar === "none") {
@@ -63,9 +64,9 @@ class Navbars extends Component {
                         data-target="#addModal"
                         className="fas fa-plus"
                     ></i>
-                    <a href="/history">
+                    <Link to="/history">
                         <i className="fas fa-clipboard"></i>
-                    </a>
+                    </Link>
                     <i
                         onClick={this.handleLogOut}
                         className="fa fa-window-close"
