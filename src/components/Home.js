@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-const URL_STRING = "3.85.4.188:3333"
 
 import Body from "./Body";
 import Navbars from "./Navbars";
+const URL_STRING = "3.85.4.188:3333"
 
 class Home extends Component {
     constructor(props) {
