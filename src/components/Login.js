@@ -3,7 +3,7 @@ import axios from 'axios'
 // import '../assets/css/bootstrap.min.css'
 // import '../assets/css/fontawesome.min.css'
 import '../App.css'
-const URL_STRING = "3.85.4.188:3333";
+const URL_STRING = process.env.REACT_APP_CLOUD;
 
 class Login extends Component{
   constructor(props){
@@ -13,7 +13,7 @@ class Login extends Component{
   }
     componentDidMount(){
         let auth = localStorage.getItem("keyToken")
-        if (auth != null ) this.props.history.push('/home')
+        if (auth != null ) window.location = '/home'
     }
 
   handleSubmit(e){
@@ -29,7 +29,7 @@ class Login extends Component{
     })
     .then(res => {
       localStorage.setItem('keyToken', `Bearer ${res.data.token}`)
-        this.props.history.push('/home');
+      window.location.href = `/home`
     })
     .catch(err => {
       alert('username or password incorrect')
@@ -47,7 +47,7 @@ class Login extends Component{
     })
     .then(res => {
       if (res.status === 200) {
-        this.props.history.push('/');
+        window.location.href = `/`
       } else if (res.status === 500) {
         alert("username is already exist")
       }

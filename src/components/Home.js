@@ -3,7 +3,7 @@ import axios from "axios";
 
 import Body from "./Body";
 import Navbars from "./Navbars";
-const URL_STRING = "3.85.4.188:3333"
+const URL_STRING = process.env.REACT_APP_CLOUD;
 
 class Home extends Component {
     constructor(props) {

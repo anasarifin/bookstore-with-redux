@@ -81,7 +81,7 @@ class Body extends Component {
                 }
             }
         });
-        this.props.history.push('/home');
+        window.location.href = "/home";
     }
     handleAddImg(e) {
        //eslint-disable-next-line
@@ -189,7 +189,7 @@ class Body extends Component {
                     }
                 )
                 .then(() => {
-        this.props.history.push('/history');
+                    window.location.href = "/history";
                 });
         });
     }

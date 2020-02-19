@@ -4,7 +4,7 @@ import '../assets/style/product.css'
 import {Card, CardImg, CardBody, CardTitle, CardText, CardSubtitle, Button} from 'reactstrap';
 import { connect } from "react-redux";
 import { categories } from "../Redux/Actions/categories";
-const URL_STRING = "3.85.4.188:3333";
+const URL_STRING = process.env.REACT_APP_CLOUD;
 
 class Product extends Component {
   constructor(props){
@@ -97,7 +97,7 @@ class Product extends Component {
       config: { headers: {'Content-Type': 'multipart/form-data', 'Authorization': localStorage.getItem('keyToken') }}
     })
 
-        this.props.history.push('/home');
+    window.location.href = `/home`;
   }
 
   async addToCart(){
@@ -130,7 +130,7 @@ class Product extends Component {
 
     axios.delete(`http://${URL_STRING}/api/products/${this.props.id}`, {crossdomain: true})
 
-        this.props.history.push('/home');
+    window.location.href = `/home`;
   }
 
   render(){
@@ -138,7 +138,7 @@ class Product extends Component {
         <>
         <div className="card">
         <Card>
-            <CardImg className="cardImg"  src={`http://${URL_STRING}/` + this.props.image}/>
+            <CardImg className="cardImg"  src={`http://${URL_STRING}/uploads` + this.props.image}/>
             <CardBody>
                 <CardTitle>{this.props.name}</CardTitle>
                 <CardSubtitle></CardSubtitle>
