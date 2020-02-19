@@ -3,6 +3,7 @@ import axios from 'axios'
 // import '../assets/css/bootstrap.min.css'
 // import '../assets/css/fontawesome.min.css'
 import '../App.css'
+const URL_STRING = "3.85.4.188:3333";
 
 class Login extends Component{
   constructor(props){
@@ -22,7 +23,7 @@ class Login extends Component{
 
     axios({
       method: 'post',
-      url: 'http://localhost:3333/api/users/login',
+        url: `http://${URL_STRING}/api/users/login`,
       data: data,
       config: { headers: {'Content-Type': 'multipart/form-data' }}
     })
@@ -40,7 +41,7 @@ class Login extends Component{
     const data = new FormData(e.target)
     console.log(e)
 
-    fetch('http://localhost:3333/api/users/register', {
+    fetch(`http://${URL_STRING}/api/users/register`, {
       method: 'POST',
       body: data,
     })

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+const URL_STRING = "3.85.4.188:3333"
 
 import Body from "./Body";
 import Navbars from "./Navbars";
@@ -21,7 +22,7 @@ class Home extends Component {
     async search(filter) {
          await axios
             .get(
-                `http://localhost:3333/api/products/search?name=${filter}`,
+                `http://${URL_STRING}/api/products/search?name=${filter}`,
                 {
                     headers: {
                         Authorization: localStorage.getItem("keyToken")

@@ -9,6 +9,7 @@ import Cart from "./Cart";
 // import Pagination from './Pagination';
 import { connect } from "react-redux";
 import { categories } from "../Redux/Actions/categories";
+const URL_STRING = "3.85.4.188:3333";
 
 class Body extends Component {
     constructor() {
@@ -71,7 +72,7 @@ class Body extends Component {
 
         axios({
             method: "post",
-            url: "http://localhost:3333/api/products",
+            url: `http://${URL_STRING}/api/products`,
             data: data,
             config: {
                 headers: {
@@ -115,7 +116,7 @@ class Body extends Component {
         } else {
             axios
                 .get(
-                    "http://localhost:3333/api/products?page=" +
+                    `http://${URL_STRING}/api/products?page=` +
                         this.state.currentPage +
                         "&limit=6&sortBy=" +
                         val,
@@ -175,7 +176,7 @@ class Body extends Component {
         this.state.cart.map(item => {
             axios
                 .post(
-                    "http://localhost:3333/api/products/history",
+                    `http://${URL_STRING}/api/products/history`,
                     {
                         product: item.name,
                         price: item.price * item.qty,
@@ -212,7 +213,7 @@ class Body extends Component {
     async search() {
         await axios
             .get(
-                `http://localhost:3333/api/products/search?name=${this.state.filter}`,
+                `http://${URL_STRING}/api/products/search?name=${this.state.filter}`,
                 {
                     headers: {
                         Authorization: localStorage.getItem("keyToken")
@@ -230,7 +231,7 @@ class Body extends Component {
             });
     }
   async getAll(){
-    await axios.get('http://localhost:3333/api/products',{
+    await axios.get(`http://${URL_STRING}/api/products`,{
       headers: {
         Authorization: localStorage.getItem('keyToken')
       }
@@ -242,7 +243,7 @@ class Body extends Component {
       console.log(err)
     })
 
-    await axios.get('http://localhost:3333/api/products?page='+this.state.currentPage+'&limit=6',{
+    await axios.get(`http://${URL_STRING}/api/products?page=`+this.state.currentPage+'&limit=6',{
       headers: {
         Authorization: localStorage.getItem('keyToken')
       }
