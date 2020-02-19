@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../assets/style/navbar.css";
-const URL_STRING = "3.85.4.188:3333"
 
 class Navbars extends Component {
     constructor(props) {
@@ -19,7 +18,7 @@ class Navbars extends Component {
 
     handleLogOut() {
         localStorage.removeItem("keyToken");
-        window.location.href = `http://${URL_STRING}/`;
+        window.location.href = `/`;
     }
     sideBarToggle() {
         if (this.state.showSideBar === "none") {
