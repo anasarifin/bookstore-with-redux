@@ -29,7 +29,7 @@ class Login extends Component{
     })
     .then(res => {
       localStorage.setItem('keyToken', `Bearer ${res.data.token}`)
-      window.location.href = "http://localhost:3000/home"
+	this.props.history.push('/home');
     })
     .catch(err => {
       alert('username or password incorrect')
@@ -47,7 +47,7 @@ class Login extends Component{
     })
     .then(res => {
       if (res.status === 200) {
-        window.location.href = "http://localhost:3000/"
+	this.props.history.push('/home');
       } else if (res.status === 500) {
         alert("username is already exist")
       }
