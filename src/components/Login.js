@@ -29,7 +29,7 @@ class Login extends Component{
     })
     .then(res => {
       localStorage.setItem('keyToken', `Bearer ${res.data.token}`)
-      window.location.href = `/home`
+        this.props.history.push('/home');
     })
     .catch(err => {
       alert('username or password incorrect')
