@@ -19,7 +19,7 @@ class Navbars extends Component {
 
     handleLogOut() {
         localStorage.removeItem("keyToken");
-        window.location.href('/')
+        window.location.href = 'http://3.85.4.188'
     }
     sideBarToggle() {
         if (this.state.showSideBar === "none") {
@@ -58,7 +58,7 @@ class Navbars extends Component {
                     className="sideApp shadow"
                     style={{ display: this.state.showSideBar }}
                 >
-                    <a href="/home"><i className="fas fa-book"></i></a>
+                    <Link to="/home"><i className="fas fa-book"></i></Link>
                     <i
                         data-toggle="modal"
                         data-target="#addModal"

@@ -81,7 +81,8 @@ class Body extends Component {
                 }
             }
         });
-        this.props.history.push('/home');
+        return <Redirect to="/"/>
+        // this.props.history.push('/home');
     }
     handleAddImg(e) {
        //eslint-disable-next-line
@@ -182,14 +183,10 @@ class Body extends Component {
                         price: item.price * item.qty,
                         amount: item.qty
                     },
-                    {
-                        headers: {
-                            Authorization: localStorage.getItem("keyToken")
-                        }
-                    }
                 )
                 .then(() => {
-        this.props.history.push('/history');
+        return <Redirect to="/history"/>
+        // this.props.history.push('/history');
                 });
         });
     }
