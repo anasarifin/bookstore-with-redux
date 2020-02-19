@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../assets/style/navbar.css";
+const URL_STRING = "3.85.4.188:3333"
 
 class Navbars extends Component {
     constructor(props) {
