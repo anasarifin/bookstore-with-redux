@@ -13,7 +13,7 @@ class Login extends Component{
   }
     componentDidMount(){
         let auth = localStorage.getItem("keyToken")
-        if (auth != null ) window.location = '/home'
+        if (auth != null ) this.props.history.push('/home')
     }
 
   handleSubmit(e){
@@ -47,7 +47,7 @@ class Login extends Component{
     })
     .then(res => {
       if (res.status === 200) {
-        window.location.href = `/`
+        this.props.history.push('/');
       } else if (res.status === 500) {
         alert("username is already exist")
       }

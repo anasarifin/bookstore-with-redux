@@ -18,7 +18,7 @@ class Navbars extends Component {
 
     handleLogOut() {
         localStorage.removeItem("keyToken");
-        window.location.href = `/`;
+        this.props.history.push('/');
     }
     sideBarToggle() {
         if (this.state.showSideBar === "none") {
