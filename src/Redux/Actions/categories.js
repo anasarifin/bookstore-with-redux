@@ -1,6 +1,7 @@
 import axios from "axios";
 // const URL_STRING = "http://ec2-54-90-79-234.compute-1.amazonaws.com:3333";
-const URL_STRING = "https://serene-everglades-64554.herokuapp.com";
+// const URL_STRING = "https://serene-everglades-64554.herokuapp.com";
+let URL_STRING = "http://localhost:3333"
 
 export const categories = () => {
     return {
